@@ -54,9 +54,10 @@ class WordData:
         return words, names
 
     def count(self, words):
-        c = Counter(words).most_common(self.word_num)
+        c = Counter(words).most_common()
         _max_count = c[0][1]
         weight = {k: v / _max_count for k, v in c if k not in self.stop_words}
+        weight = {k: weight[k] for k in list(weight.keys())[:self.word_num]}
         return weight
 
     def parse(self, text):
