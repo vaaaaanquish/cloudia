@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "cloudia"
+version = "0.0.1"
+description = "Tools to easily create a word cloud"
+authors = ["vaaaaanquish <6syun9@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/vaaaaanquish/cloudia"
+repository = "https://github.com/vaaaaanquish/cloudia"
+documentation = ""
+keywords = ["wordcloud", "matplotlib"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+nagisa = "*"
+wordcloud = "*"
+pandas = "*"
+matplotlib = "*"
+japanize_matplotlib = { git = "https://github.com/vaaaaanquish/japanize-matplotlib", branch = "master" }
+
+[build-system]
+requires = ["poetry"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry.scripts]
+my-script = 'cloudia:main'
