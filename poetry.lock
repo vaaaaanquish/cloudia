@@ -153,8 +153,16 @@ matplotlib = "*"
 numpy = ">=1.6.1"
 pillow = "*"
 
+[[package]]
+category = "main"
+description = "Capture C-level output in context managers"
+name = "wurlitzer"
+optional = false
+python-versions = ">=2.7"
+version = "2.0.0"
+
 [metadata]
-content-hash = "347cdd2b845cc60d6fbbfb6a595fb9ecee0161e67feaa2ad8b93db1b71533d26"
+content-hash = "e73f602aba5a0deef6a83fcb097812957081baeb4f133b11d88d6ec208ff694a"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -363,4 +371,8 @@ wordcloud = [
     {file = "wordcloud-1.6.0-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:d4b970d4d30bc9baec9e8b2d7e69fb9771576bb09d6b6f6ce6f22403ca58d6de"},
     {file = "wordcloud-1.6.0-cp37-cp37m-win_amd64.whl", hash = "sha256:3971ca6042745169e9645b3bbce64b790f8c211ad7c7d265049992506e033212"},
     {file = "wordcloud-1.6.0.tar.gz", hash = "sha256:4335deb87b7cd9f8a6ce12de0257d15f14f98874f326e7a839f27b2c8ac792ca"},
+]
+wurlitzer = [
+    {file = "wurlitzer-2.0.0-py2.py3-none-any.whl", hash = "sha256:eec7e3c779ddbf32d7e962ccc457580d1696f887e74ede45ebefaf6d12e7bf8f"},
+    {file = "wurlitzer-2.0.0.tar.gz", hash = "sha256:86a510c0d34fcc9786ad1a9f557ac980f30ef2f821a75c2e4333311e0fd9cd76"},
 ]

@@ -16,6 +16,7 @@ nagisa = "*"
 wordcloud = "*"
 pandas = "*"
 matplotlib = "*"
+wurlitzer = "*"
 japanize_matplotlib = "*"
 
 [build-system]

@@ -1,7 +1,11 @@
-import nagisa
 from collections import Counter
 import pandas as pd
 import re
+from wurlitzer import pipes
+
+with pipes() as (out, err):
+    # https://github.com/clab/dynet/issues/1528
+    import nagisa
 
 
 class WordData:
