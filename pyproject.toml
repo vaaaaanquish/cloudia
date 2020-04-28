@@ -16,7 +16,7 @@ nagisa = "*"
 wordcloud = "*"
 pandas = "*"
 matplotlib = "*"
-japanize_matplotlib = { git = "https://github.com/vaaaaanquish/japanize-matplotlib", branch = "master" }
+japanize_matplotlib = "*"
 
 [build-system]
 requires = ["poetry"]
