@@ -35,15 +35,8 @@ description = "matplotlibのフォント設定を自動で日本語化する"
 name = "japanize-matplotlib"
 optional = false
 python-versions = "*"
-version = "1.1.0"
+version = "1.0.5"
 
-[package.dependencies]
-matplotlib = "*"
-
-[package.source]
-reference = "6d8f8ab4c927633be6b2257d09288afaa1cc7132"
-type = "git"
-url = "https://github.com/vaaaaanquish/japanize-matplotlib"
 [[package]]
 category = "main"
 description = "A fast implementation of the Cassowary constraint solver"
@@ -161,7 +154,7 @@ numpy = ">=1.6.1"
 pillow = "*"
 
 [metadata]
-content-hash = "352c2aa04e79d13de3b74628dc41bbeb92570ac3fdc24d7b13407aa8e4e63dde"
+content-hash = "347cdd2b845cc60d6fbbfb6a595fb9ecee0161e67feaa2ad8b93db1b71533d26"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -227,7 +220,9 @@ dynet = [
     {file = "dyNET-2.1-cp37-cp37m-win_amd64.whl", hash = "sha256:1a51dbb6062d136a2208721ad8d857b1f350630f806efa06f97060a2910fbf26"},
     {file = "dyNET-2.1.tar.gz", hash = "sha256:d0f58aaf3926da24baba6e3e76cb3d090c8b6d359196ce138b11faa291b2ec07"},
 ]
-japanize-matplotlib = []
+japanize-matplotlib = [
+    {file = "japanize-matplotlib-1.0.5.tar.gz", hash = "sha256:2a52b6319a1566686f9aba3571186a78dd788fe12b8ea1f416d67d230989e657"},
+]
 kiwisolver = [
     {file = "kiwisolver-1.2.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:443c2320520eda0a5b930b2725b26f6175ca4453c61f739fef7a5847bd262f74"},
     {file = "kiwisolver-1.2.0-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:efcf3397ae1e3c3a4a0a0636542bcad5adad3b1dd3e8e629d0b6e201347176c8"},
