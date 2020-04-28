@@ -1,2 +1,4 @@
 # cloudia
-Tools to easily create a word cloud
+Tools to easily create a word cloud.
+
+
