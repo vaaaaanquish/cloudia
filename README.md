@@ -1,6 +1,7 @@
 # Cloudia
 Tools to easily create a word cloud.
 
+  
 ### from string
 
 from str or List[str]
@@ -25,9 +26,9 @@ text1 = "text data..."
 text2 = "text data..."
 Cloudia([ ("cloudia 1", text1), ("cloudia 2", text2) ]).plot()
 ```
-Tuple is ("IMAGE TITLE", "TEXT").
-
- 　
+Tuple is ("IMAGE TITLE", "TEXT").  
+  
+  
 ### from pandas
 
 We can use pandas.
@@ -51,8 +52,8 @@ We can use Tuple too.
 ```
 Cloudia( ("IMAGE TITLE", pd.Series(['hoge'])) ).plot()
 ```
-
- 
+  
+  
 ### from japanese
 
 We can process Japanese too.
@@ -62,11 +63,12 @@ text = "これはCloudiaのテストです。WordCloudをつくるには本来�
 Cloudia(text).plot()
 ```
 
-from japanese without morphological analysis module
-![japanese_img](https://github.com/vaaaaanquish/cloudia/blob/021a6d151fb6a3b579dc96b7086356fc0c225852/examples/img/japanese_img.png?raw=true, "jap_img")
+from japanese without morphological analysis module.  
+  
+![japanese_img](https://github.com/vaaaaanquish/cloudia/blob/021a6d151fb6a3b579dc96b7086356fc0c225852/examples/img/japanese_img.png?raw=true, "jap_img")  
   
 No need to introduce morphological analysis.
-
+  
   
 # Require
 
@@ -74,13 +76,14 @@ I'm waiting for this [PR](https://github.com/uehara1414/japanize-matplotlib/pull
 ```
 pip install git+https://github.com/vaaaaanquish/japanize-matplotlib
 ```
-
+  
+  
 # Install
 
 ```
 pip install cloudia
 ```
-
+  
   
 # Args
 
@@ -120,7 +123,7 @@ Cloudia().save(
     row_num=3
 )
 ```
-
+  
   
 # Thanks
 
