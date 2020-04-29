@@ -10,6 +10,10 @@ repository = "https://github.com/vaaaaanquish/cloudia"
 documentation = ""
 keywords = ["wordcloud", "matplotlib"]
 
+[tool.poetry-dynamic-versioning]
+enable = true
+style = "pep440"
+
 [tool.poetry.dependencies]
 python = "^3.6"
 nagisa = "*"
@@ -19,9 +23,9 @@ matplotlib = "*"
 wurlitzer = "*"
 japanize_matplotlib = "*"
 
+[tool.poetry.scripts]
+my-script = 'cloudia:main'
+
 [build-system]
 requires = ["poetry"]
 build-backend = "poetry.masonry.api"
-
-[tool.poetry.scripts]
-my-script = 'cloudia:main'
