@@ -14,3 +14,8 @@ pip install git+https://github.com/vaaaaanquish/japanize-matplotlib
 ```
 pip install cloudia
 ```
+
+# Thanks
+
+- [japanize-matplotlib](https://github.com/uehara1414/japanize-matplotlib)
+- [nagisa](https://github.com/taishi-i/nagisa)
