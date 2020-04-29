@@ -9,6 +9,7 @@ text = "text data"
 Cloudia(text).plot()
 ```
 
+![sample_img](https://github.com/vaaaaanquish/cloudia/blob/021a6d151fb6a3b579dc96b7086356fc0c225852/examples/img/sample_img.png?raw=true, "sample_img")
 
 from : [20 Newsgroups](http://qwone.com/~jason/20Newsgroups/)
 
@@ -23,6 +24,8 @@ Cloudia(df).plot()
 df.wc.plot(dark_theme=True)
 ```
 
+![pandas_img](https://github.com/vaaaaanquish/cloudia/blob/021a6d151fb6a3b579dc96b7086356fc0c225852/examples/img/pandas_img.png?raw=true, "pandas_img")
+![dark_img](https://github.com/vaaaaanquish/cloudia/blob/021a6d151fb6a3b579dc96b7086356fc0c225852/examples/img/dark_img.png?raw=true, "dark_img")
 from pandas.DataFrame or pandas.Series.
 
 
@@ -31,7 +34,10 @@ text = "これはCloudiaのテストです。WordCloudをつくるには本来�
 
 Cloudia(text).plot()
 ```
-from japanese
+
+![japanese_img](https://github.com/vaaaaanquish/cloudia/blob/021a6d151fb6a3b579dc96b7086356fc0c225852/examples/img/japanese_img.png?raw=true, "jap_img")
+from japanese without morphological analysis module
+
 
 # Require
 
