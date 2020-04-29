@@ -6,6 +6,11 @@ class TestCloudia(unittest.TestCase):
     def setUp(self):
         self.cls = WordData('test', [], [], None, None, None, lambda x: [x])
 
+    def test_init_data(self):
+        words, name = self.cls._init_data('test')
+        self.assertListEqual(words, ['test'])
+        self.assertListEqual(name, ['word cloud'])
+
     def test_count(self):
         self.cls.word_num = 2
         self.cls.stop_words = 'test'
