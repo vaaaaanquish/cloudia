@@ -93,23 +93,24 @@ Cloudia(
   extract_postags=['名詞', '英単語', 'ローマ字文'],    # part of speech for japanese
   word_num=100,    # max word num
   parser=None,    # morphological analysis instance for japanese
-  parse_func=None    # split text function, example: lambda x: x.split(',')
+  parse_func=None,    # split text function, example: lambda x: x.split(',')
+  sampling_rate=sampling_rate    # pandas.DataFrame.sample.frac
 )
 ```
   
   
-plot method args. (pandas method too)
+plot method args.
 ```
 Cloudia().plot(
     dark_theme=False,    # color theme
     figsize=(7.2, 4.8),    # plt figure size
     wcsize=(720, 480),    # one wordcloud ax size
     title_size=12,     # title text size
-    row_num=3    # for example, 12 wordcloud, row_num=3 -> 4*3image
+    row_num=3,    # for example, 12 wordcloud, row_num=3 -> 4*3image
 )
 ```
 
-save method args. (pandas method too)
+save method args.
 ```
 Cloudia().save(
     file_path,    # save figure image path
@@ -120,6 +121,25 @@ Cloudia().save(
     row_num=3
 )
 ```
+
+pandas.DataFrame, pandas.Series wc.plot method args.
+```
+DataFrame.wc.plot(
+  single_words=[],    # It's not split word list, example: ["neural network"]
+  stop_words=STOPWORDS,    # not count words, default is wordcloud.STOPWORDS
+  extract_postags=['名詞', '英単語', 'ローマ字文'],    # part of speech for japanese
+  word_num=100,    # max word num
+  parser=None,    # morphological analysis instance for japanese
+  parse_func=None,    # split text function, example: lambda x: x.split(',')
+  sampling_rate=sampling_rate    # pandas.DataFrame.sample.frac
+  dark_theme=False,    # color theme
+  figsize=(7.2, 4.8),    # plt figure size
+  wcsize=(720, 480),    # one wordcloud ax size
+  title_size=12,     # title text size
+  row_num=3,    # for example, 12 wordcloud, row_num=3 -> 4*3image
+)
+```
+If we use wc.save, setting file_path args.
   
   
 # Thanks

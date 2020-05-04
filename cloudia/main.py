@@ -5,14 +5,23 @@ from cloudia.word_data import WordData
 
 
 class Cloudia:
-    def __init__(self, data, single_words=[], stop_words=STOPWORDS, extract_postags=['名詞', '英単語', 'ローマ字文'], word_num=100, parser=None, parse_func=None):
+    def __init__(self,
+                 data,
+                 single_words=[],
+                 stop_words=STOPWORDS,
+                 extract_postags=['名詞', '英単語', 'ローマ字文'],
+                 word_num=100,
+                 parser=None,
+                 parse_func=None,
+                 sampling_rate=1.0):
         self.wd = WordData(data=data,
                            single_words=single_words,
                            stop_words=stop_words,
                            extract_postags=extract_postags,
                            word_num=word_num,
                            parser=parser,
-                           parse_func=parse_func)
+                           parse_func=parse_func,
+                           sampling_rate=sampling_rate)
 
     def plot(self, dark_theme=False, figsize=(7.2, 4.8), wcsize=(720, 480), title_size=12, row_num=3):
         wc = self.make_wordcloud(dark_theme, wcsize)
