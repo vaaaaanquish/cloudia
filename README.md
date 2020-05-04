@@ -75,14 +75,6 @@ from japanese without morphological analysis module.
 No need to introduce morphological analysis.
   
   
-# Require
-
-I'm waiting for this [PR](https://github.com/uehara1414/japanize-matplotlib/pull/9).
-```
-pip install git+https://github.com/vaaaaanquish/japanize-matplotlib
-```
-  
-  
 # Install
 
 ```
