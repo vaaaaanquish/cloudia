@@ -18,12 +18,11 @@ class CloudiaDataFrame(Cloudia):
              parse_func=None,
              sampling_rate=1.0,
              dark_theme=False,
-             figsize=(7.2, 4.8),
-             wcsize=(720, 480),
              title_size=12,
-             row_num=3):
+             row_num=3,
+             figsize_rate=2):
         Cloudia(self.df, single_words, stop_words, extract_postags, word_num, parser, parse_func,
-                sampling_rate).plot(dark_theme, figsize, wcsize, title_size, row_num)
+                sampling_rate).plot(dark_theme, title_size, row_num, figsize_rate)
 
     def save(self, fig_path, dark_theme, **args):
         self.plot(args)
@@ -44,12 +43,11 @@ class CloudiaSeries(Cloudia):
              parse_func=None,
              sampling_rate=1.0,
              dark_theme=False,
-             figsize=(7.2, 4.8),
-             wcsize=(720, 480),
              title_size=12,
-             row_num=3):
+             row_num=3,
+             figsize_rate=2):
         Cloudia(self.series, single_words, stop_words, extract_postags, word_num, parser, parse_func,
-                sampling_rate).plot(dark_theme, figsize, wcsize, title_size, row_num)
+                sampling_rate).plot(dark_theme, title_size, row_num, figsize_rate)
 
     def save(self, fig_path, dark_theme, **args):
         self.plot(args)
