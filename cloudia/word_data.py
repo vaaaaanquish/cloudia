@@ -48,7 +48,7 @@ class WordData:
             names = [data[0]]
         elif isinstance(data, pd.DataFrame):
             names = data.columns.tolist()
-            words = [' '.join(x) for x in data.values.tolist()]
+            words = [' '.join(data[x].values.tolist()) for x in names]
         elif isinstance(data, pd.Series):
             words = [' '.join(data.values.tolist())]
             names = [data.name]
