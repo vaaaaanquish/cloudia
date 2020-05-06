@@ -5,7 +5,7 @@ import pandas as pd
 
 class TestCloudia(unittest.TestCase):
     def setUp(self):
-        self.cls = WordData('test', [], [], None, None, None, lambda x: [x], 1)
+        self.cls = WordData('test', [], [], None, None, None, lambda x: [x])
 
     def assertSortTextEqual(self, data, target):
         """for random sample list."""

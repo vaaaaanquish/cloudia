@@ -11,9 +11,8 @@ with pipes() as (out, err):
 
 
 class WordData:
-    def __init__(self, data: Any, single_words: List[str], stop_words: List[str], extract_postags: List[str], word_num: int, parser: Any, parse_func: Any,
-                 sampling_rate: float):
-        words, self.names = self._init_data(data, sampling_rate)
+    def __init__(self, data: Any, single_words: List[str], stop_words: List[str], extract_postags: List[str], word_num: int, parser: Any, parse_func: Any):
+        words, self.names = self._init_data(data)
         self.word_num = word_num
         self.single_words = single_words
         self.extract_postags = extract_postags
@@ -25,12 +24,12 @@ class WordData:
         else:
             self.words = [self.count(self.parse(x)) for x in words]
 
-    def _init_data(self, data: Any, sampling_rate: float) -> Tuple[List[str], List[str]]:
+    def _init_data(self, data: Any) -> Tuple[List[str], List[str]]:
         words, names = [], []
         if isinstance(data, list):
             if isinstance(data[0], tuple):
                 if isinstance(data[0][1], pd.Series):
-                    words = [' '.join(d.sample(frac=sampling_rate).tolist()) for n, d in data]
+                    words = [' '.join(d.values.tolist()) for n, d in data]
                     names = [n for n, d in data]
                 else:
                     words = [w for n, w in data]
@@ -39,7 +38,7 @@ class WordData:
                 words = data
                 names = [f'word cloud {i+1}' for i in range(len(data))]
             elif isinstance(data[0], pd.Series):
-                words = [' '.join(d.sample(frac=sampling_rate).tolist()) for d in data]
+                words = [' '.join(d.values.tolist()) for d in data]
                 names = [d.name for d in data]
         elif isinstance(data, str):
             words = [data]
@@ -49,9 +48,9 @@ class WordData:
             names = [data[0]]
         elif isinstance(data, pd.DataFrame):
             names = data.columns.tolist()
-            words = [' '.join(data[n].sample(frac=sampling_rate).tolist()) for n in names]
+            words = [' '.join(x) for x in data.values.tolist()]
         elif isinstance(data, pd.Series):
-            words = [' '.join(data.sample(frac=sampling_rate).tolist())]
+            words = [' '.join(data.values.tolist())]
             names = [data.name]
 
         return words, names
