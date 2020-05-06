@@ -94,7 +94,6 @@ Cloudia(
   word_num=100,    # max word num
   parser=None,    # morphological analysis instance for japanese
   parse_func=None,    # split text function, example: lambda x: x.split(',')
-  sampling_rate=sampling_rate    # pandas.DataFrame.sample.frac
 )
 ```
   
@@ -129,7 +128,6 @@ DataFrame.wc.plot(
   word_num=100,    # max word num
   parser=None,    # morphological analysis instance for japanese
   parse_func=None,    # split text function, example: lambda x: x.split(',')
-  sampling_rate=sampling_rate    # pandas.DataFrame.sample.frac
   dark_theme=False,    # color theme
   title_size=12,     # title text size
   row_num=3,    # for example, 12 wordcloud, row_num=3 -> 4*3image

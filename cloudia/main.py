@@ -14,16 +14,14 @@ class CloudiaBase:
                  extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
                  word_num: int = 100,
                  parser: Any = None,
-                 parse_func: Any = None,
-                 sampling_rate: float = 1.0):
+                 parse_func: Any = None):
         self.wd = WordData(data=data,
                            single_words=single_words,
                            stop_words=stop_words,
                            extract_postags=extract_postags,
                            word_num=word_num,
                            parser=parser,
-                           parse_func=parse_func,
-                           sampling_rate=sampling_rate)
+                           parse_func=parse_func)
 
     def make_wordcloud(self, dark_theme: bool, rate: int) -> List[Tuple[str, WordCloud]]:
         wordcloud_list = []
