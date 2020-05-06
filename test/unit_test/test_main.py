@@ -1,11 +1,11 @@
-from cloudia.main import Cloudia
+from cloudia.main import CloudiaBase
 import unittest
 
 
 class TestCloudia(unittest.TestCase):
     # TODO: split test case
     def setUp(self):
-        self.cls = Cloudia('test')
+        self.cls = CloudiaBase('test')
 
     def test_calc_fig_size(self):
         # row_num==item_num==1
