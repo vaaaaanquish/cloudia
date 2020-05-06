@@ -103,10 +103,9 @@ plot method args.
 ```
 Cloudia().plot(
     dark_theme=False,    # color theme
-    figsize=(7.2, 4.8),    # plt figure size
-    wcsize=(720, 480),    # one wordcloud ax size
     title_size=12,     # title text size
     row_num=3,    # for example, 12 wordcloud, row_num=3 -> 4*3image
+    figsize_rate=2    # figure size rate
 )
 ```
 
@@ -115,10 +114,9 @@ save method args.
 Cloudia().save(
     file_path,    # save figure image path
     dark_theme=False,
-    figsize=(7.2, 4.8),
-    wcsize=(720, 480),
     title_size=12, 
-    row_num=3
+    row_num=3,
+    figsize_rate=2
 )
 ```
 
@@ -133,10 +131,9 @@ DataFrame.wc.plot(
   parse_func=None,    # split text function, example: lambda x: x.split(',')
   sampling_rate=sampling_rate    # pandas.DataFrame.sample.frac
   dark_theme=False,    # color theme
-  figsize=(7.2, 4.8),    # plt figure size
-  wcsize=(720, 480),    # one wordcloud ax size
   title_size=12,     # title text size
   row_num=3,    # for example, 12 wordcloud, row_num=3 -> 4*3image
+  figsize_rate=2    # figure size rate
 )
 ```
 If we use wc.save, setting file_path args.
