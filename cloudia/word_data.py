@@ -47,6 +47,7 @@ class WordData:
         return words
 
     def _init_data(self, data: Any) -> Tuple[List[str], List[str]]:
+        # TODO: set assert
         words, names = [], []
         if isinstance(data, list):
             if isinstance(data[0], tuple):

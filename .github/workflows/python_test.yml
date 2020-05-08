@@ -44,4 +44,17 @@ jobs:
             exit 1
         fi
         echo "pass mypy"
-
+    - name: integration test
+      run: |
+        poetry run python ./test/integration_test/test_cloudia_plot.py
+        if [ $? != 0 ]; then
+            echo "failed: cloudia_plot"
+            exit 1
+        fi
+        echo "pass cloudia_plot"
+        poetry run python ./test/integration_test/test_cloudia_pandas_plot.py
+        if [ $? != 0 ]; then
+            echo "failed: cloudia_pandas_plot"
+            exit 1
+        fi
+        echo "pass cloudia_pandas_plot"
