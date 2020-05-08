@@ -16,6 +16,6 @@ if __name__ == '__main__':
         Cloudia(('test', 'hoge')).plot()
         Cloudia(pd.DataFrame({'test': ['hoge']})).plot()
         Cloudia(pd.Series(['hoge'])).plot()
-    except:
+    except Exception:
         sys.exit(1)
     sys.exit(0)
