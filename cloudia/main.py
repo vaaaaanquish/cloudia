@@ -3,7 +3,9 @@ from typing import Any, List, Tuple
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 from wordcloud import WordCloud, STOPWORDS
+
 from cloudia.word_data import WordData
+from cloudia.utils import process
 
 
 class CloudiaBase:
@@ -12,16 +14,11 @@ class CloudiaBase:
                  single_words: List[str] = [],
                  stop_words: List[str] = STOPWORDS,
                  extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
-                 word_num: int = 100,
-                 parser: Any = None,
-                 parse_func: Any = None):
-        self.wd = WordData(data=data,
-                           single_words=single_words,
-                           stop_words=stop_words,
-                           extract_postags=extract_postags,
-                           word_num=word_num,
-                           parser=parser,
-                           parse_func=parse_func)
+                 parse_func: Any = process,
+                 multiprocess: bool = True,
+                 **args):
+        args.update(dict(single_words=single_words, stop_words=stop_words, extract_postags=extract_postags))
+        self.wd = WordData(data, parse_func, multiprocess, **args)
 
     def make_wordcloud(self, dark_theme: bool, rate: int) -> List[Tuple[str, WordCloud]]:
         wordcloud_list = []
