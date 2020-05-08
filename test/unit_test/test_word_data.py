@@ -7,7 +7,7 @@ from collections import Counter
 
 class TestWordData(unittest.TestCase):
     def setUp(self):
-        self.cls = WordData('test', lambda x: [x], True)
+        self.cls = WordData('test', lambda x: [x], True, False)
 
     def assertSortTextEqual(self, data, target):
         """for random sample list."""
@@ -60,7 +60,7 @@ class TestWordData(unittest.TestCase):
             return x
 
         with patch('cloudia.word_data.WordData._parse', side_effect=_parse):
-            output = self.cls.parse(['hoge hoge', 'piyo'], None, None)
+            output = self.cls.parse(['hoge hoge', 'piyo'], None, None, False)
             self.assertListEqual(output, ['hoge hoge', 'piyo'])
 
     def test_parse_list_case(self):
@@ -68,7 +68,7 @@ class TestWordData(unittest.TestCase):
             return [Counter(w.split(' ')) for w in x]
 
         with patch('cloudia.word_data.WordData._parse', side_effect=_parse):
-            output = self.cls.parse([['hoge hoge', 'piyo'], ['fuga', 'fuga']], None, None)
+            output = self.cls.parse([['hoge hoge', 'piyo'], ['fuga', 'fuga']], None, None, False)
             target = [Counter({'hoge': 2, 'piyo': 1}), Counter({'fuga': 2})]
             for o, t in zip(output, target):
                 self.assertEqual(type(o), type(t))
