@@ -1,9 +1,11 @@
 from typing import Any, List
 
-from cloudia.main import CloudiaBase, Cloudia
 import matplotlib.pyplot as plt
 from wordcloud import STOPWORDS
 import pandas as pd
+
+from cloudia.main import CloudiaBase, Cloudia
+from cloudia.utils import default_parse_func
 
 
 @pd.api.extensions.register_dataframe_accessor('wc')
@@ -15,22 +17,13 @@ class CloudiaDataFrame(CloudiaBase):
              single_words: List[str] = [],
              stop_words: List[str] = STOPWORDS,
              extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
-             word_num: int = 100,
-             parser: Any = None,
-             parse_func: Any = None,
+             parse_func: Any = default_parse_func,
              dark_theme: bool = False,
              title_size: int = 12,
              row_num: int = 3,
-             figsize_rate: int = 2):
-        Cloudia(
-            self.df,
-            single_words,
-            stop_words,
-            extract_postags,
-            word_num,
-            parser,
-            parse_func,
-        ).plot(dark_theme, title_size, row_num, figsize_rate)
+             figsize_rate: int = 2,
+             multiprocess: bool = True):
+        Cloudia(self.df, single_words, stop_words, extract_postags, parse_func, multiprocess).plot(dark_theme, title_size, row_num, figsize_rate)
 
     def save(self, fig_path: str, dark_theme: bool, **args: Any):
         self.plot(**args)
@@ -46,22 +39,13 @@ class CloudiaSeries(CloudiaBase):
              single_words: List[str] = [],
              stop_words: List[str] = STOPWORDS,
              extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
-             word_num: int = 100,
-             parser: Any = None,
-             parse_func: Any = None,
+             parse_func: Any = default_parse_func,
              dark_theme: bool = False,
              title_size: int = 12,
              row_num: int = 3,
-             figsize_rate: int = 2):
-        Cloudia(
-            self.series,
-            single_words,
-            stop_words,
-            extract_postags,
-            word_num,
-            parser,
-            parse_func,
-        ).plot(dark_theme, title_size, row_num, figsize_rate)
+             figsize_rate: int = 2,
+             multiprocess: bool = True):
+        Cloudia(self.series, single_words, stop_words, extract_postags, parse_func, multiprocess).plot(dark_theme, title_size, row_num, figsize_rate)
 
     def save(self, fig_path: str, dark_theme: bool, **args: Any):
         self.plot(**args)

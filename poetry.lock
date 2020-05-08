@@ -35,10 +35,18 @@ description = "matplotlibのフォント設定を自動で日本語化する"
 name = "japanize-matplotlib"
 optional = false
 python-versions = "*"
-version = "1.1.1"
+version = "1.1.2"
 
 [package.dependencies]
 matplotlib = "*"
+
+[[package]]
+category = "main"
+description = "Lightweight pipelining: using Python functions as pipeline jobs."
+name = "joblib"
+optional = false
+python-versions = "*"
+version = "0.14.1"
 
 [[package]]
 category = "main"
@@ -165,7 +173,7 @@ python-versions = ">=2.7"
 version = "2.0.0"
 
 [metadata]
-content-hash = "aa467e1fc61ce35041b8b0bf14d477d5c0fb0d72e8fbb0e7fcef9e48b85b9203"
+content-hash = "6e1e02815b139ab5162d0a2b90ec531ae6ed13fe54c692fde83cdf3ab5ffd970"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -232,7 +240,11 @@ dynet = [
     {file = "dyNET-2.1.tar.gz", hash = "sha256:d0f58aaf3926da24baba6e3e76cb3d090c8b6d359196ce138b11faa291b2ec07"},
 ]
 japanize-matplotlib = [
-    {file = "japanize-matplotlib-1.1.1.tar.gz", hash = "sha256:763cae497fd2884c5b3ce40ddb1eb5160ee02b6e1d5a4397af416584edb3b0e7"},
+    {file = "japanize-matplotlib-1.1.2.tar.gz", hash = "sha256:e2d9bb5ac2f2c37baf0991d43981fc63c2c5a3722e8e41dd6c31030220237b01"},
+]
+joblib = [
+    {file = "joblib-0.14.1-py2.py3-none-any.whl", hash = "sha256:bdb4fd9b72915ffb49fde2229ce482dd7ae79d842ed8c2b4c932441495af1403"},
+    {file = "joblib-0.14.1.tar.gz", hash = "sha256:0630eea4f5664c463f23fbf5dcfc54a2bc6168902719fa8e19daf033022786c8"},
 ]
 kiwisolver = [
     {file = "kiwisolver-1.2.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:443c2320520eda0a5b930b2725b26f6175ca4453c61f739fef7a5847bd262f74"},
