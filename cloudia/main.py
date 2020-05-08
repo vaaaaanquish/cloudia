@@ -5,7 +5,7 @@ import japanize_matplotlib
 from wordcloud import WordCloud, STOPWORDS
 
 from cloudia.word_data import WordData
-from cloudia.utils import process
+from cloudia.utils import defalt_parse_func
 
 
 class CloudiaBase:
@@ -14,7 +14,7 @@ class CloudiaBase:
                  single_words: List[str] = [],
                  stop_words: List[str] = STOPWORDS,
                  extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
-                 parse_func: Any = process,
+                 parse_func: Any = defalt_parse_func,
                  multiprocess: bool = True,
                  **args):
         args.update(dict(single_words=single_words, stop_words=stop_words, extract_postags=extract_postags))

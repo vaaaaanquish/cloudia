@@ -10,23 +10,22 @@ from cloudia.utils import function_wrapper
 
 class WordData:
     def __init__(self, data: Any, parse_func: Any, multiprocess: bool, **args):
-        self.words, self.names = self._init_data(data)
-        self.words = self._process_parse(function_wrapper(parse_func), multiprocess, **args)
-        self.words = [self._convert_weight(x) for x in self.words]
+        words, self.names = self._init_data(data)
+        self.counter_list = self.parse(words, parse_func, multiprocess, **args)
+        self.words = [self.convert_weight(x) for x in self.counter_list]
 
-    def _process_parse(self, parse_func: Any, multiprocess: bool, **args) -> List[List[str]]:
-        """flatten -> parse words -> chunked"""
-        if isinstance(self.words[0], list):
-            word_list_length = len(self.words[0])
-            words = list(chain.from_iterable(self.words))
+    def parse(self, words, parse_func: Any, multiprocess: bool, **args) -> List[List[str]]:
+        if isinstance(words[0], list):
+            word_list_length = len(words[0])
+            words = list(chain.from_iterable(words))
             words = self._parse(words, parse_func, multiprocess, **args)
             words = list(zip_longest(*[iter(words)] * word_list_length))
             words = [sum(w, Counter()) for w in words]
         else:
-            words = self._parse(self.words, parse_func, multiprocess, **args)
+            words = self._parse(words, parse_func, multiprocess, **args)
         return words
 
-    def _convert_weight(self, c: Counter) -> Dict[str, float]:
+    def convert_weight(self, c: Counter) -> Dict[str, float]:
         c = c.most_common()
         _max_count = c[0][1]
         weight = {k: v / _max_count for k, v in c}
@@ -35,7 +34,7 @@ class WordData:
 
     def _parse(self, words: List[str], parse_func: Any, multiprocess: bool, **args) -> List[str]:
         if multiprocess:
-            return self._parallel_parse(words, parse_func, **args)
+            return self._parallel_parse(words, function_wrapper(parse_func), **args)
         return self._single_thread_parse(words, parse_func, **args)
 
     def _single_thread_parse(self, words: List[str], parse_func: Any, **args) -> List[str]:
