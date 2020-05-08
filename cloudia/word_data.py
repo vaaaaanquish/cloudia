@@ -9,18 +9,22 @@ from cloudia.utils import function_wrapper
 
 
 class WordData:
-    def __init__(self, data: Any, parse_func: Callable[..., List[str]], multiprocess: bool, **args):
+    def __init__(self, data: Any, parse_func: Callable[..., List[str]], multiprocess: bool, individual: bool, **args):
         words, self.names = self._init_data(data)
-        self.counter_list = self.parse(words, parse_func, multiprocess, **args)
+        self.counter_list = self.parse(words, parse_func, multiprocess, individual, **args)
         self.words = [self.convert_weight(x) for x in self.counter_list]
 
-    def parse(self, words, parse_func: Callable[..., List[str]], multiprocess: bool, **args) -> List[Counter]:
+    def parse(self, words, parse_func: Callable[..., List[str]], multiprocess: bool, individual: bool, **args) -> List[Counter]:
         if isinstance(words[0], list):
             word_list_length = len(words[0])
-            words = list(chain.from_iterable(words))
-            words = self._parse(words, parse_func, multiprocess, **args)
-            words = list(zip_longest(*[iter(words)] * word_list_length))
-            words = [sum(w, Counter()) for w in words]
+            if individual:
+                words = list(chain.from_iterable(words))
+                words = self._parse(words, parse_func, multiprocess, **args)
+                words = list(zip_longest(*[iter(words)] * word_list_length))
+                words = [sum(w, Counter()) for w in words]
+            else:
+                words = [' '.join(x) for x in words]
+                words = self._parse(words, parse_func, multiprocess, **args)
         else:
             words = self._parse(words, parse_func, multiprocess, **args)
         return words
