@@ -91,9 +91,8 @@ Cloudia(
   single_words=[],    # It's not split word list, example: ["neural network"]
   stop_words=STOPWORDS,    # not count words, default is wordcloud.STOPWORDS
   extract_postags=['名詞', '英単語', 'ローマ字文'],    # part of speech for japanese
-  word_num=100,    # max word num
-  parser=None,    # morphological analysis instance for japanese
   parse_func=None,    # split text function, example: lambda x: x.split(',')
+  multiprocess=True    # Flag for using multiprocessing
 )
 ```
   
@@ -125,9 +124,8 @@ DataFrame.wc.plot(
   single_words=[],    # It's not split word list, example: ["neural network"]
   stop_words=STOPWORDS,    # not count words, default is wordcloud.STOPWORDS
   extract_postags=['名詞', '英単語', 'ローマ字文'],    # part of speech for japanese
-  word_num=100,    # max word num
-  parser=None,    # morphological analysis instance for japanese
   parse_func=None,    # split text function, example: lambda x: x.split(',')
+  multiprocess=True,    # Flag for using multiprocessing
   dark_theme=False,    # color theme
   title_size=12,     # title text size
   row_num=3,    # for example, 12 wordcloud, row_num=3 -> 4*3image

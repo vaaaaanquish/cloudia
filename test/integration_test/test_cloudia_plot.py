@@ -9,14 +9,15 @@ if __name__ == '__main__':
     from cloudia.main import Cloudia
 
     try:
-        Cloudia([('test', pd.Series(['hoge']))]).plot()
-        Cloudia([('test', 'hoge')]).plot()
-        Cloudia(['hoge']).plot()
-        Cloudia([pd.Series(['hoge'])]).plot()
-        Cloudia('hoge').plot()
-        Cloudia(('test', 'hoge')).plot()
-        Cloudia(pd.DataFrame({'test': ['hoge']})).plot()
-        Cloudia(pd.Series(['hoge'])).plot()
+        for multiprocess in [True, False]:
+            Cloudia([('test', pd.Series(['hoge']))], multiprocess=multiprocess).plot()
+            Cloudia([('test', 'hoge')], multiprocess=multiprocess).plot()
+            Cloudia(['hoge'], multiprocess=multiprocess).plot()
+            Cloudia([pd.Series(['hoge'])], multiprocess=multiprocess).plot()
+            Cloudia('hoge', multiprocess=multiprocess).plot()
+            Cloudia(('test', 'hoge'), multiprocess=multiprocess).plot()
+            Cloudia(pd.DataFrame({'test': ['hoge']}), multiprocess=multiprocess).plot()
+            Cloudia(pd.Series(['hoge']), multiprocess=multiprocess).plot()
     except Exception:
         traceback.print_exc()
         sys.exit(1)

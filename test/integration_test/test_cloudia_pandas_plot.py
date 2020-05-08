@@ -9,9 +9,10 @@ if __name__ == '__main__':
     import cloudia  # noqa
 
     try:
-        pd.DataFrame({'test': ['hoge']}).wc.plot()
-        pd.DataFrame({'test': ['hoge']})['test'].wc.plot()
-        pd.Series(['hoge']).wc.plot()
+        for multiprocess in [True, False]:
+            pd.DataFrame({'test': ['hoge']}).wc.plot(multiprocess=multiprocess)
+            pd.DataFrame({'test': ['hoge']})['test'].wc.plot(multiprocess=multiprocess)
+            pd.Series(['hoge']).wc.plot(multiprocess=multiprocess)
     except Exception:
         traceback.print_exc()
         sys.exit(1)
