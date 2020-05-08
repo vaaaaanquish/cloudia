@@ -33,10 +33,7 @@ jobs:
           exit 1
         fi
         echo "pass yapf"
-    - name: Test with pytest
-      run: |
-        poetry run python -m unittest discover -s ./test/unit_test/
-    - name: Test with mypy
+    - name: Lint with mypy
       run: |
         mypy --ignore-missing-imports ./cloudia/
         if [ $? != 0 ]; then
@@ -44,7 +41,10 @@ jobs:
             exit 1
         fi
         echo "pass mypy"
-    - name: integration test
+    - name: Unit Test
+      run: |
+        poetry run python -m unittest discover -s ./test/unit_test/
+    - name: Integration Test
       run: |
         poetry run python ./test/integration_test/test_cloudia_plot.py
         if [ $? != 0 ]; then

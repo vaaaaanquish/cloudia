@@ -1,5 +1,6 @@
 import sys
 import pathlib
+import traceback
 import pandas as pd
 
 if __name__ == '__main__':
@@ -17,5 +18,6 @@ if __name__ == '__main__':
         Cloudia(pd.DataFrame({'test': ['hoge']})).plot()
         Cloudia(pd.Series(['hoge'])).plot()
     except Exception:
+        traceback.print_exc()
         sys.exit(1)
     sys.exit(0)
