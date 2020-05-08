@@ -92,7 +92,8 @@ Cloudia(
   stop_words=STOPWORDS,    # not count words, default is wordcloud.STOPWORDS
   extract_postags=['名詞', '英単語', 'ローマ字文'],    # part of speech for japanese
   parse_func=None,    # split text function, example: lambda x: x.split(',')
-  multiprocess=True    # Flag for using multiprocessing
+  multiprocess=True,    # Flag for using multiprocessing
+  individual=False    # flag for ' '.join(word) with parse 
 )
 ```
   
@@ -126,6 +127,7 @@ DataFrame.wc.plot(
   extract_postags=['名詞', '英単語', 'ローマ字文'],    # part of speech for japanese
   parse_func=None,    # split text function, example: lambda x: x.split(',')
   multiprocess=True,    # Flag for using multiprocessing
+  individual=False,    # flag for ' '.join(word) with parse 
   dark_theme=False,    # color theme
   title_size=12,     # title text size
   row_num=3,    # for example, 12 wordcloud, row_num=3 -> 4*3image

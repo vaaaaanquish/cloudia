@@ -16,9 +16,10 @@ class CloudiaBase:
                  extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
                  parse_func: Any = default_parse_func,
                  multiprocess: bool = True,
+                 individual: bool = False,
                  **args):
         args.update(dict(single_words=single_words, stop_words=stop_words, extract_postags=extract_postags))
-        self.wd = WordData(data, parse_func, multiprocess, **args)
+        self.wd = WordData(data, parse_func, multiprocess, individual, **args)
 
     def make_wordcloud(self, dark_theme: bool, rate: int) -> List[Tuple[str, WordCloud]]:
         wordcloud_list = []
