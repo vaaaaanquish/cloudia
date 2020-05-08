@@ -38,7 +38,7 @@ class WordData:
         return self._single_thread_parse(words, parse_func, **args)
 
     def _single_thread_parse(self, words: List[str], parse_func: Any, **args) -> List[str]:
-        return [parse_func(x, **args) for x in words]
+        return [Counter(parse_func(x, **args)) for x in words]
 
     def _parallel_parse(self, words: List[str], parse_func: Any, **args) -> List[str]:
         words = Parallel(n_jobs=-1)([delayed(parse_func)(w, **dict(**a, **{'_index': i})) for i, (w, a) in enumerate(zip(words, repeat(args)))])

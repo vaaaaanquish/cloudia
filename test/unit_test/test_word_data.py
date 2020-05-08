@@ -1,9 +1,11 @@
 from cloudia.word_data import WordData
 import unittest
+from unittest.mock import patch
 import pandas as pd
+from collections import Counter
 
 
-class TestCloudia(unittest.TestCase):
+class TestWordData(unittest.TestCase):
     def setUp(self):
         self.cls = WordData('test', lambda x: [x], True)
 
@@ -53,22 +55,48 @@ class TestCloudia(unittest.TestCase):
         self.assertSortTextEqual(words, ['test1 test2'])
         self.assertListEqual(name, ['wc'])
 
-    # def test_count(self):
-    #     self.cls.word_num = 2
-    #     self.cls.stop_words = 'test'
-    #     words = ['hoge', 'hoge', 'hoge', 'test', 'test', 'piyo', 'piyo', 'fuga']
-    #     output = self.cls.count(words)
-    #     self.assertDictEqual(output, {'hoge': 1.0, 'piyo': 0.6666666666666666})
+    def test_parse(self):
+        def _parse(x, y, z, **args):
+            return x
 
-    # def test_parse(self):
-    #     class MockData:
-    #         def __init__(self, d):
-    #             self.words = d
-    #
-    #     class MockParser:
-    #         def extract(self, text, extract_postags):
-    #             return MockData(text.split(' '))
-    #
-    #     self.cls.parser = MockParser()
-    #     output = self.cls.parse("It's a sample text; samples 1,2 face;) ")
-    #     self.assertListEqual(output, ["it's", 'sample', 'text', 'samples', 'face'])
+        with patch('cloudia.word_data.WordData._parse', side_effect=_parse):
+            output = self.cls.parse(['hoge hoge', 'piyo'], None, None)
+            self.assertListEqual(output, ['hoge hoge', 'piyo'])
+
+    def test_parse_list_case(self):
+        def _parse(x, y, z, **args):
+            return [Counter(w.split(' ')) for w in x]
+
+        with patch('cloudia.word_data.WordData._parse', side_effect=_parse):
+            output = self.cls.parse([['hoge hoge', 'piyo'], ['fuga', 'fuga']], None, None)
+            target = [Counter({'hoge': 2, 'piyo': 1}), Counter({'fuga': 2})]
+            for o, t in zip(output, target):
+                self.assertEqual(type(o), type(t))
+                self.assertEqual(o.most_common(), t.most_common())
+
+    def test_convert_weight(self):
+        output = self.cls.convert_weight(Counter(['hoge', 'hoge', 'piyo']))
+        self.assertDictEqual(output, {'hoge': 1, 'piyo': 0.5})
+
+    def test_single_thread_parse(self):
+        def f(x):
+            return x.split(' ')
+
+        output = self.cls._single_thread_parse(['hoge hoge', 'piyo'], f)
+        target = [Counter(['hoge', 'hoge']), Counter(['piyo'])]
+        for o, t in zip(output, target):
+            self.assertEqual(type(o), type(t))
+            self.assertEqual(o.most_common(), t.most_common())
+
+    def test_parallel_parse(self):
+        def f(x, _index):
+            return Counter(x.split(' ')), _index
+
+        output = self.cls._parallel_parse(['hoge hoge', 'piyo'], f, **{})
+        target = [
+            Counter(['hoge', 'hoge']),
+            Counter(['piyo']),
+        ]
+        for o, t in zip(output, target):
+            self.assertEqual(type(o), type(t))
+            self.assertEqual(o.most_common(), t.most_common())

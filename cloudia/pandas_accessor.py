@@ -5,7 +5,7 @@ from wordcloud import STOPWORDS
 import pandas as pd
 
 from cloudia.main import CloudiaBase, Cloudia
-from cloudia.utils import defalt_parse_func
+from cloudia.utils import default_parse_func
 
 
 @pd.api.extensions.register_dataframe_accessor('wc')
@@ -17,7 +17,7 @@ class CloudiaDataFrame(CloudiaBase):
              single_words: List[str] = [],
              stop_words: List[str] = STOPWORDS,
              extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
-             parse_func: Any = defalt_parse_func,
+             parse_func: Any = default_parse_func,
              dark_theme: bool = False,
              title_size: int = 12,
              row_num: int = 3,
@@ -39,7 +39,7 @@ class CloudiaSeries(CloudiaBase):
              single_words: List[str] = [],
              stop_words: List[str] = STOPWORDS,
              extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
-             parse_func: Any = defalt_parse_func,
+             parse_func: Any = default_parse_func,
              dark_theme: bool = False,
              title_size: int = 12,
              row_num: int = 3,
