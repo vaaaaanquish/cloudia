@@ -11,8 +11,13 @@ with pipes() as (out, err):
 NUM_REGEX = re.compile('^[0-9]+$')
 
 
-def default_parse_func(text: str, single_words: List[str], extract_postags: List[str], stop_words: List[str]) -> List[str]:
-    parser = nagisa.Tagger(single_word_list=single_words)
+def make_nagisa_tagger(single_words: List[str]):
+    return nagisa.Tagger(single_word_list=single_words)
+
+
+def default_parse_func(text: str, single_words: List[str], extract_postags: List[str], stop_words: List[str], parser) -> List[str]:
+    if parser == 'default':
+        parser = make_nagisa_tagger(single_words)
     for x in ['"', ';', ',', '(', ')', '\u3000']:
         text = text.replace(x, ' ')
     text = text.lower()

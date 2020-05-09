@@ -79,10 +79,10 @@ class TestWordData(unittest.TestCase):
         self.assertDictEqual(output, {'hoge': 1, 'piyo': 0.5})
 
     def test_single_thread_parse(self):
-        def f(x):
+        def f(x, parser, single_words):
             return x.split(' ')
 
-        output = self.cls._single_thread_parse(['hoge hoge', 'piyo'], f)
+        output = self.cls._single_thread_parse(['hoge hoge', 'piyo'], f, **{'parser': 'default', 'single_words': []})
         target = [Counter(['hoge', 'hoge']), Counter(['piyo'])]
         for o, t in zip(output, target):
             self.assertEqual(type(o), type(t))

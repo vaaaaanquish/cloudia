@@ -18,14 +18,15 @@ class CloudiaDataFrame(CloudiaBase):
              stop_words: List[str] = STOPWORDS,
              extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
              parse_func: Any = default_parse_func,
+             parser: Any = 'default',
              dark_theme: bool = False,
              title_size: int = 12,
              row_num: int = 3,
              figsize_rate: int = 2,
-             multiprocess: bool = True,
+             multiprocess: bool = False,
              individual: bool = False,
              **args):
-        Cloudia(self.df, single_words, stop_words, extract_postags, parse_func, multiprocess, individual,
+        Cloudia(self.df, single_words, stop_words, extract_postags, parse_func, parser, multiprocess, individual,
                 **args).plot(dark_theme, title_size, row_num, figsize_rate)
 
     def save(self, fig_path: str, dark_theme: bool, **args: Any):
@@ -43,14 +44,15 @@ class CloudiaSeries(CloudiaBase):
              stop_words: List[str] = STOPWORDS,
              extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
              parse_func: Any = default_parse_func,
+             parser: Any = 'default',
              dark_theme: bool = False,
              title_size: int = 12,
              row_num: int = 3,
              figsize_rate: int = 2,
-             multiprocess: bool = True,
+             multiprocess: bool = False,
              individual: bool = False,
              **args):
-        Cloudia(self.series, single_words, stop_words, extract_postags, parse_func, multiprocess, individual,
+        Cloudia(self.series, single_words, stop_words, extract_postags, parse_func, parser, multiprocess, individual,
                 **args).plot(dark_theme, title_size, row_num, figsize_rate)
 
     def save(self, fig_path: str, dark_theme: bool, **args: Any):
