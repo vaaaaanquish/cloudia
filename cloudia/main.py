@@ -15,10 +15,11 @@ class CloudiaBase:
                  stop_words: List[str] = STOPWORDS,
                  extract_postags: List[str] = ['名詞', '英単語', 'ローマ字文'],
                  parse_func: Any = default_parse_func,
-                 multiprocess: bool = True,
+                 parser: Any = 'default',
+                 multiprocess: bool = False,
                  individual: bool = False,
                  **args):
-        args.update(dict(single_words=single_words, stop_words=stop_words, extract_postags=extract_postags))
+        args.update(dict(single_words=single_words, stop_words=stop_words, extract_postags=extract_postags, parser=parser))
         self.wd = WordData(data, parse_func, multiprocess, individual, **args)
 
     def make_wordcloud(self, dark_theme: bool, rate: int) -> List[Tuple[str, WordCloud]]:

@@ -5,7 +5,7 @@ from collections import Counter
 
 class TestUtils(unittest.TestCase):
     def test_default_parse_func(self):
-        output = default_parse_func('This is a simple test.', ['simple test'], ['英単語'], ['is'])
+        output = default_parse_func('This is a simple test.', ['simple test'], ['英単語'], ['is'], 'default')
         self.assertListEqual(output, ['this', 'simple\u3000test'])
 
     def test_function_wrapper(self):

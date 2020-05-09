@@ -5,7 +5,7 @@ from collections import Counter
 from joblib import Parallel, delayed
 import pandas as pd
 
-from cloudia.utils import function_wrapper
+from cloudia.utils import function_wrapper, make_nagisa_tagger
 
 
 class WordData:
@@ -42,6 +42,8 @@ class WordData:
         return self._single_thread_parse(words, parse_func, **args)
 
     def _single_thread_parse(self, words: List[str], parse_func: Callable[..., List[str]], **args) -> List[Counter]:
+        if args['parser'] == 'default':
+            args.update({'parser': make_nagisa_tagger(args['single_words'])})
         return [Counter(parse_func(x, **args)) for x in words]
 
     def _parallel_parse(self, words: List[str], parse_func: Callable, **args) -> List[List[Counter]]:
